@@ -7,8 +7,18 @@ A simple and efficient Python-based utility designed to convert audio recordings
 * **Lightweight & Fast:** Built with clean Python scripts for seamless execution.
 * **Easy Integration:** Can be integrated into larger transcription pipelines or automation workflows.
 
-## 🛠️ Prerequisites & Dependencies
+## 🚀 Getting Started & Running Locally
 
-Make sure you have Python installed, then install the required dependencies:
+Follow these terminal commands to set up, install dependencies, and run the speech-to-text application on your local machine:
+
+### 1. Clone the repository
 ```bash
+git clone [https://github.com/abhisheksinghrathor44-gif/speech-to-text-converter.git]
+
+#### 2. Install dependencies
+Make sure you have Python installed, then run:
 pip install -r requirements.txt
+
+##### 3.Run the application
+streamlit run app.py
+
