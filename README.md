@@ -11,7 +11,7 @@ A simple and efficient Python-based utility designed to convert audio recordings
 
 Follow these terminal commands to set up, install dependencies, and run the speech-to-text application on your local machine:
 
-### 1. Clone the repository
+### Clone the repository
 ```bash
 git clone [https://github.com/abhisheksinghrathor44-gif/speech-to-text-converter.git]
 
