@@ -10,7 +10,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 
 # Page Configuration
 st.set_page_config(
-    page_title="AI Meeting Assistant & Executive Reporter",
+    page_title="AI Speech Analyzer",
     page_icon="🚀",
     layout="centered"
 )
@@ -25,6 +25,8 @@ if "summary" not in st.session_state:
     st.session_state.summary = ""
 if "actions" not in st.session_state:
     st.session_state.actions = []
+if "last_input_type" not in st.session_state:
+    st.session_state.last_input_type = None
 
 # Tabs for input choices
 tab1, tab2 = st.tabs(["🎙️ Live Browser Recording", "📁 Upload WAV Audio File"])
@@ -34,15 +36,23 @@ audio_file = None
 with tab1:
     st.info("Record your meeting discussion directly using your browser microphone.")
     live_audio = st.audio_input("Record audio stream", key="live_recorder")
+    if live_audio is not None:
+        if st.session_state.last_input_type == "upload":
+            st.session_state.transcript = ""
+            st.session_state.summary = ""
+            st.session_state.actions = []
+        st.session_state.last_input_type = "live"
+        audio_file = live_audio
     
 with tab2:
     uploaded_file = st.file_uploader("Upload a meeting WAV file", type=["wav"], key="file_uploader")
-
-# Intelligent selection: use live recording if available, otherwise check file uploader
-if live_audio is not None:
-    audio_file = live_audio
-elif uploaded_file is not None:
-    audio_file = uploaded_file
+    if uploaded_file is not None:
+        if st.session_state.last_input_type == "live":
+            st.session_state.transcript = ""
+            st.session_state.summary = ""
+            st.session_state.actions = []
+        st.session_state.last_input_type = "upload"
+        audio_file = uploaded_file
 
 def extract_action_items(text):
     """Rule-based NLP keyword extraction for meeting tasks and deliverables"""
