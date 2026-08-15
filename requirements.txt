@@ -2,6 +2,7 @@ streamlit
 SpeechRecognition
 transformers
 torch
+torchvision
 reportlab
 scipy
 numpy
