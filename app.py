@@ -6,7 +6,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# Navigation using the exact simple filenames in your pages/ folder
+# Define the pages using the clean filenames in your pages/ folder
 pg = st.navigation([
     st.Page("pages/live_recording.py", title="Live Recording", icon="🎙️"),
     st.Page("pages/file_upload.py", title="Upload File", icon="📁")
